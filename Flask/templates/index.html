@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products List</title>
+    <!-- Link to Bootstrap CSS stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4">Products List</h1>
+        <ul class="list-group mt-3">
+            {% for product in data %}
+                <li class="list-group-item">
+                    <strong>Product ID:</strong> {{ product[0] }}<br>
+                    <strong>Name:</strong> {{ product[1] }}<br>
+                    <strong>Price:</strong> ${{ product[2] }}<br>
+                    <strong>Quantity:</strong> {{ product[3] }}
+                    <div class="d-flex flex-row">
+                        <form method="POST" action="/delete/{{ product[0] }}" class="mt-2" >
+                     <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                    <form method="POST" action="/update/{{ product[0] }}" class="m-2">
+                     <button type="submit" class="btn btn-success">Update</button>
+                    </form>
+
+                    </div>
+
+
+                </li>
+            {% endfor %}
+        </ul>
+        <button class="btn btn-primary  m-2"><a href="/form" class="text-decoration-none text-white">InsertProduct</a></button>
+    </div>
+
+    <!-- Link to Bootstrap JS and Popper.js scripts (for dropdowns and other components) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
